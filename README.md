@@ -24,15 +24,11 @@ Receipt contains:
 - Tax: 8.64% (put into monetary value)
 - Total
 
-file = open("coffee.json")
-json = file.read
-
-parsed = JSON.parse(json)
-
 Classes:
 - Printer/Display/Format class
-- Receipt class
-- Order class? reads the order?
+- Receipt class - overall 'controller' class
+- Order class to read the data and transfer into hash
+- Calculator class to manage all the calculation logic?
 
 INPUT     | OUTPUT
 Jane                     |

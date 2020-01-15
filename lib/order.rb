@@ -1,13 +1,20 @@
 class Order
 
-  attr_reader :output
+  attr_reader :output, :customer
 
   def initialize
     @output = Hash.new(0)
+    @customer = []
   end
 
   def receive_order(input)
     get_orders(input)
+  end
+
+  def get_customer(input)
+    array = input.tr("\n",", ").split(",")
+    @customer << array[0]
+    return @customer
   end
 
   private
