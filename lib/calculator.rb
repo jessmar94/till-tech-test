@@ -20,9 +20,7 @@ class Calculator
   def final_bill
     total_amnt = calc_total
     tax_amnt = calc_tax
-    # @payment["Tax"] = "$" + tax_amnt.round(2).to_s
     @payment["Tax"] = @format.format_money(tax_amnt)
-    # @payment["Total"] = "$" + total_amnt.round(2).to_s
     @payment["Total"] = @format.format_money(total_amnt)
     return @payment
   end
