@@ -17,7 +17,7 @@ class Calculator
     get_customer(input)
   end
 
-  def final_bill
+  def get_tax_total
     total_amnt = calc_total
     tax_amnt = calc_tax
     @payment["Tax"] = @format.format_money(tax_amnt)
@@ -29,7 +29,7 @@ class Calculator
 
   def calc_total
     prices = get_prices
-    items = @final_order[@customer[0]]
+    items = @final_order[@customer]
     items.each do |item, quantity|
       @total += (prices[item] * quantity)
     end

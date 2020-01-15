@@ -2,13 +2,35 @@ require 'json'
 
 class Format
 
+  attr_reader :bill
+
+  def initialize
+    @bill = ""
+  end
+
   def format_money(number)
     formatted = "$" + number.round(2).to_s
   end
 
+  def format_bill(order)
+    get_cafe_details
+    customer_name(order)
+    items = order[@customer]
+    format_order_details(items)
+    @bill = "#{datetime}
+    #{@shop}
+    #{@address}
+    #{@phone}
+    #{@customer}
+    #{@order}
+    tax
+    total
+    "
+  end
+
   private
 
-  def dateime
+  def datetime
     Time.now.strftime("%d/%m/%Y %H:%M")
   end
 
@@ -20,22 +42,29 @@ class Format
     @address = parse[0]['address']
     number = parse[0]['phone']
     @phone = format_phone_number(number)
+    @prices = parse[0]['prices'][0]
   end
 
   def format_phone_number(input)
-    "+" + "(" + input[1..3] + ")" + input[4..6]+ "-" + input[7..10]
+    "+" + input[0] + " (" + input[1..3] + ") " + input[4..6]+ "-" + input[7..10]
   end
 
-  def get_order_details(order)
-
+  def format_order_details(items)
+    @order = ""
+    items.each do |item, quantity|
+      @order << item + " " + quantity.to_s + " x " + @prices[item].to_s + "\n"
+    end
+    return @order.chomp("\n")
   end
+
+  def format_tax_total(input)
+    puts "Tax: " + input["Tax"]
+    puts "Total: " + input["Total"]
+  end
+
+  def customer_name(input)
+    name = input.keys
+    @customer = name[0]
+  end
+
 end
-
-# - date/time of print
-# - The Coffee Connection, 123 Lakeside May
-# - Phone: +1 (650) 360-0708
-# - Table: 1 / [4]
-# - Customer names
-# - Item, quantity and price per item e.g. Coffee   1 x 4.50
-# - Tax: 8.64% (put into monetary value)
-# - Total

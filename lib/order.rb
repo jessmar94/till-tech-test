@@ -14,7 +14,7 @@ class Order
   def get_customer(input)
     array = input.tr("\n",", ").split(",")
     @customer << array[0]
-    return @customer
+    return @customer[0]
   end
 
   private

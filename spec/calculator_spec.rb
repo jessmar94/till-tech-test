@@ -11,7 +11,7 @@ describe Calculator do
       order = subject.order(input)
       output = { "Tax" => "$1.72",
                  "Total" => "$19.95"}
-      expect(subject.final_bill).to eq output
+      expect(subject.get_tax_total).to eq output
     end
   end
 end
