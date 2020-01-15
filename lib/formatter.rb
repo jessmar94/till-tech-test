@@ -3,8 +3,6 @@ require_relative 'calculator'
 
 class Format
 
-  attr_reader :bill
-
   def initialize
     @bill = ""
   end

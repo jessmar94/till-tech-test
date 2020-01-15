@@ -3,8 +3,6 @@ require 'json'
 
 class Calculator
 
-  attr_reader :total, :tax, :payment
-
   def initialize
     @payment = {"Tax" => "$0", "Total" => "£0"}
     @total = 0
