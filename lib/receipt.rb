@@ -1,11 +1,12 @@
 require_relative 'order'
 require_relative 'calculator'
+require_relative 'formatter'
 
 class Receipt
 
-  def initialize(order = Order.new, calc = Calculator.new)
-    @order = order
-    @calculator = calc
+  def initialize
+    @order = Order.new
+    @calculator = Calculator.new
   end
 
   def input_order(order)
@@ -13,11 +14,12 @@ class Receipt
   end
 
   def get_receipt
-    # totals = @calculator.get_tax_total(@order_items)
-    # items = @order_items
-    # customer = @order.customer
-    # receipt = @format.format_bill(items, totals, customer)
-    # return receipt
+    format = Format.new
+    totals = @calculator.get_tax_total(@order_items)
+    items = @order_items
+    customer = @order.customer
+    receipt = format.format_bill(items, customer)
+    return receipt
   end
 
 end
