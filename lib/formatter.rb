@@ -1,4 +1,5 @@
 require 'json'
+require_relative 'calculator'
 
 class Format
 
@@ -12,20 +13,11 @@ class Format
     formatted = "$" + number.round(2).to_s
   end
 
-  def format_bill(order)
+  def format_bill(order, customer)
     get_cafe_details
-    customer_name(order)
-    items = order[@customer]
-    format_order_details(items)
-    @bill = "#{datetime}
-    #{@shop}
-    #{@address}
-    #{@phone}
-    #{@customer}
-    #{@order}
-    tax
-    total
-    "
+    format_order_details(order)
+    format_tax_total(order)
+    @bill = "#{datetime}\n#{@shop}\n#{@address}\n#{@phone}\n#{customer}\n#{@order}Tax: #{@tax}\nTotal: #{@total}"
   end
 
   private
@@ -52,19 +44,15 @@ class Format
   def format_order_details(items)
     @order = ""
     items.each do |item, quantity|
-      @order << item + " " + quantity.to_s + " x " + @prices[item].to_s + "\n"
+      @order << item + " " + quantity.to_s + " x " + ("%.2f" % @prices[item].to_s) + "\n"
     end
-    return @order.chomp("\n")
   end
 
-  def format_tax_total(input)
-    puts "Tax: " + input["Tax"]
-    puts "Total: " + input["Total"]
-  end
-
-  def customer_name(input)
-    name = input.keys
-    @customer = name[0]
+  def format_tax_total(order)
+    calc = Calculator.new
+    amounts = calc.get_tax_total(order)
+    @total = amounts["Total"]
+    @tax = amounts["Tax"]
   end
 
 end

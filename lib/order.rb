@@ -4,17 +4,19 @@ class Order
 
   def initialize
     @output = Hash.new(0)
-    @customer = []
-  end
-
-  def receive_order(input)
-    get_orders(input)
+    @customer = ""
   end
 
   def get_customer(input)
     array = input.tr("\n",", ").split(",")
-    @customer << array[0]
-    return @customer[0]
+    customer << array[0]
+    @customer = customer
+  end
+
+  def receive_order(input)
+    items = get_orders(input)
+    name = get_customer(input)
+    return items[name]
   end
 
   private

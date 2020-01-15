@@ -7,11 +7,13 @@ describe Calculator do
 
   describe '#total' do
     it 'outputs total bill + tax when input order' do
-      input = "Jane\n2 x Cafe Latte\n1 x Blueberry Muffin\n1 x Choc Mudcake"
-      order = subject.order(input)
+      input = {"Cafe Latte" => 2,
+          "Blueberry Muffin" => 1,
+          "Choc Mudcake" => 1
+        }
       output = { "Tax" => "$1.72",
                  "Total" => "$19.95"}
-      expect(subject.get_tax_total).to eq output
+      expect(subject.get_tax_total(input)).to eq output
     end
   end
 end
