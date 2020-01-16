@@ -58,6 +58,7 @@ Classes:
 - Order class to read the data and transfer into hash
 - Calculator class to manage all the calculation logic?
 
+```
 INPUT     | OUTPUT
 Jane                     | Cafe details...
 2 x Cafe Latte           | cafe latter 2 x 4.75
@@ -65,6 +66,7 @@ Jane                     | Cafe details...
 1 x Choc Mudcake         | choc mudcake 1 x 6.40
                          | Tax: $1.72
                          | Total: $19.95
+ ```                        
                          
  ## Project Status 
  This is the status of the project as of 16th Jan 2020. Currently, the project is setup to accept an input with new line breaks. However, the code would need to be adjusted if the input didn't have line breaks by replacing the .tr("\n",", ") function with .tr(" ",", ") in each class where this is used. 
