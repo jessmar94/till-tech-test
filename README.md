@@ -3,16 +3,12 @@
 Implement a system that contains the business logic to produce receipts, based on a json price list and test orders. A .json file has been provided with the list of products sold at this particular coffee shop.
 
 Here are some sample orders you can try - whether you use this information is up to you:
-
+```
 Jane
 2 x Cafe Latte
 1 x Blueberry Muffin
 1 x Choc Mudcake
-
-John
-4 x Americano
-2 x Tiramisu
-5 x Blueberry Muffin
+```
 
 Your receipt must calculate and show the correct amount of tax (in this shop's case, 8.64%), as well as correct line totals and total amount. Do not worry about calculating discounts or change yet. Consider what output formats may be suitable.
 
@@ -69,3 +65,6 @@ Jane                     | Cafe details...
 1 x Choc Mudcake         | choc mudcake 1 x 6.40
                          | Tax: $1.72
                          | Total: $19.95
+                         
+ ## Project Status 
+ This is the status of the project as of 16th Jan 2020. Currently, the project is setup to accept an input with new line breaks. However, the code would need to be adjusted if the input didn't have line breaks by replacing the .tr("\n",", ") function with .tr(" ",", ") in each class where this is used. 
