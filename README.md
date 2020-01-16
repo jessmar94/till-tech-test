@@ -16,8 +16,8 @@ This project is formed of 4 classes: the Receipt Class is the overall controller
 
 ## How to Install and Run
 ```bash
-> git clone https://github.com/jessmar94/bank_tech_test.git
-> cd bank_tech_test
+> git clone https://github.com/jessmar94/till-tech-test.git
+> cd till-tech-test
 > bundle install
 ```
 Run the below commands in a REPL like IRB
@@ -41,6 +41,10 @@ Tax: $1.72
 Total: $19.95
 ```
 
+## How to Run Tests 
+```bash 
+> rspec 
+```
 ## Plan
 Receipt contains:
 - date/time of print
